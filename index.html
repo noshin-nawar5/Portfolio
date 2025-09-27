@@ -85,17 +85,28 @@ header i:hover {
   }
   h1 { font-size: 2.8rem; color: var(--text); }
   .typing {
-    font-size: 1.2rem; font-weight: 500;
-    color: var(--highlight);
-    margin-top: 8px;
-    text-align: center;
-    display: inline-block;
-    white-space: nowrap; overflow: hidden;
-    border-right: 3px solid var(--highlight);
-    animation: typing 4s steps(30,end) 1, blink .8s step-end infinite;
-  }
-  @keyframes typing { from { width:0 } to { width:100% } }
-  @keyframes blink { 0%,100% { border-color:transparent } 50% { border-color:var(--highlight) } }
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--highlight);
+  margin-top: 8px;
+  text-align: center;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid var(--highlight);
+  animation: typing 4s steps(var(--steps), end) 1, blink .8s step-end infinite;
+}
+
+/* typing animation with ch */
+@keyframes typing {
+  from { width: 0ch; }
+  to   { width: var(--chars); } /* total characters */
+}
+
+@keyframes blink {
+  0%, 100% { border-color: transparent; }
+  50% { border-color: var(--highlight); }
+}
 
   section {
     max-width: 1000px; margin: 50px auto; padding: 20px;
@@ -237,7 +248,11 @@ header i:hover {
 <header>
   <img src="n.jpg" alt="Noshin Nawar" class="profile-pic">
   <h1>Noshin Nawar</h1>
-  <p class="typing">Web Developer | Creative Tech Enthusiast</p>
+<p class="typing" style="--chars: 39ch; --steps: 39;">
+  Web Developer | Problem Solver | Creative Thinker
+</p>
+
+
    <!-- Social buttons -->
   <div style="margin-top: 20px;">
     <a href="https://github.com/noshin-nawar5" target="_blank" 
